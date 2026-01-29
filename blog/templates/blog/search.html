@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block main %}
+
+<div class="container mt-3 mb-3">
+    <h1>Результаты поиска по слову: {{ q }}</h1>
+    <br>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in posts %}
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <b>{{ post.category.name }}</b>
+                        </div>
+                        <div>
+                            <b>{{ post.created_at }}</b>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{% url 'post_detail_url' post.slug %}">
+                    <img src="{{ post.photo.url }}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:8 }}</p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <b>Просмотры: {{ post.views }}</b>
+                        </div>
+                        <div>
+                            <b>Время чтения: {{ post.reading_time }}</b>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock main %}

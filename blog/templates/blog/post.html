@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block carousel %}
+{% endblock carousel %}
+
+{% block main %}
+
+<div class="container mt-3 mb-3">
+    <div class="d-flex justify-content-between">
+        <div class="col-7">
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5>Категория: {{ post.category.name }}</h5>
+                        </div>
+                        <div>
+                            <a href="" class="btn btn-danger">Удалить</a>
+                            <a href="" class="btn btn-warning">Изменить</a>
+                            <a href="" class="btn btn-success">Назад</a>
+                        </div>
+                    </div>
+                </div>
+
+                <img src="{{ post.photo.url }}" alt="">
+
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ post.title }}</h4>
+                    <p class="card-text">{{ post.content }}</p>
+
+                    {% for tag in tags %}
+                    <b>#{{ tag.name }}</b>
+                    {% endfor %}
+
+                </div>
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <b>Автор: @username</b>
+                        </div>
+                        <div>
+                            <b>{{ post.created_at }}</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            {% for post in posts %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <b>{{ post.category.name }}</b>
+                        </div>
+                        <div>
+                            <b>{{ post.created_at }}</b>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="{% url 'post_detail_url' post.slug %}">
+                    <img src="{{ post.photo.url }}" class="card-img-top" alt="...">
+                </a>
+
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:8 }}</p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <b>Просмотры: {{ post.views }}</b>
+                        </div>
+                        <div>
+                            <b>Время чтения: {{ post.reading_time }}</b>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

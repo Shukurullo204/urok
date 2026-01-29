@@ -1,0 +1,79 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index_url' %}">
+                <img src="{% static 'logo.png' %}" alt="LOGO" width="75">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'about_us_url' %}">
+                            <b>About us</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'services_url' %}">
+                            <b>Services</b>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'our_team_url' %}">
+                            <b>Our team</b>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'contacts_url' %}">
+                            <b>Contacts</b>
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <form class="d-flex" role="search" method="get" action="{% url 'search_url' %}">
+                            <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <b>Sign in</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <b>Sign up</b>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            <b>Hello, USER !</b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">
+                                <b>Profile</b>
+                            </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <b>Add post</b>
+                            </a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">
+                                <b>Sign out</b>
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
